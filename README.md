@@ -15,7 +15,7 @@
 ## Criação do banco de dados:
 ```sql 
     CREATE DATABASE OwlComics;
-    USE OwlComics;;
+    USE OwlComics;
 ```
 
 ## Criação da tabela quadrinhos:
