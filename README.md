@@ -1,17 +1,17 @@
-# ✏️ Cenário ✏️
+# 1 - Cenário 
 
 "Bom dia, boa tarde e boa noite a todos. Foi percebido a necessidade de um sistema de banco de dados na Owl Comics Inc. devido a falta de controle que a empresa está tendo ao tentar controlar os diversos processos internos. Vamos começar definindo cada quadro que temos necessidade, primeiro iremos cadastrar o principal: as HQs. Elas deverão ter um identificador chamado ISBN(um tipo de identificação com 13 digitos), deverão ter o título, gênero, data de lançamento, preço, quantidade dele em estoque, quem é o autor da historia e o ilustrador responsavel. 
   Para o autor queremos poder cadastrar seu CPF, nome, sobrenome, uma biografia para ser aplicada automaticamente nos livros, data de nascimento,nacionalidade, quais projetos ele está e(ou) foi responsavel e prazo para entrega dos trabalhos.
   Para o ilustrador queremos cadastrar seu CPF, nome, sobrenome, uma pequena biografia, data de nascimento,nacionalidade, estilo artistico(as opções são manga, cartoon, realista, etc.), prazo para entrega dos trabalhos e quais projetos ele está e(ou) foi responsavel.
   Vendemos em lote para algumas livrarias e bibliotecas, queremos manter um cadastro de clientes também. Queremos o CNPJ do lugar, a razão social, e-mail, número de telefone, endereço, cidade que esta localizado, código postal e país.
   E por ultimo, quando esses clientes fizerem algum pedido deverá ser registrado no sistema. Cada venda devera ter um número de identificação, a data que foi feito o orçamento, a data da venda, o CNPJ e nome do cliente e por fim o total da compra."
-# 📃Modelo Conceitual📃
+# 2 - Modelo Conceitual
   <img src="Conceitual.png" />
   
-# ⚙️Modelagem Lógica⚙️
+# 3 - Modelagem Lógica
   <img src="Lógico.png" />
   
-# 💻Modelagem Física💻
+# 4 - Modelagem Física
 ## Criação do banco de dados:
 ```sql 
     CREATE DATABASE OwlComics;
@@ -70,6 +70,7 @@
     datavenda          date
   );
 ```
+# 5 - Inserção de dados nas tabelas:
 
 ## Inserindo dados na tabela quadrinhos:
 ```sql
@@ -198,4 +199,92 @@ INSERT INTO Pedidos (VENDAID, valor, dataorcamento, datavenda) VALUES
 (100018, 399.75, '2023-03-20', '2023-03-30'),
 (100019, 199.50, '2023-03-25', '2023-04-04'),
 (100020, 450.99, '2023-03-30', '2023-04-10');
+```
+
+# 6 - Crud:
+## Leitura de dados de uma tabela especifica (nesse caso, quadrinhos):
+```sql
+SELECT * FROM quadrinhos
+```
+//print aqui
+
+# Inserção de um dado em uma tabela e leitura do mesmo (nesse caso, ilustrador):
+```sql
+INSERT INTO ilustrador (nome, biografia, nacionalidade, estilo, nascimento) VALUES
+('Eu :3', 'Famoso musico e ilustrador(na minha cabeça)', 'Brasileiro', 'Fantasia', '2005-08-20');
+```
+//print aqui
+
+# Exclusão do Ilustrador "Eu :3":
+```sql
+DELETE FROM ilustrador WHERE nome = 'Eu :3';
+```
+
+//print aqui
+
+ # 7 - Relatorios:
+
+##   1. Selecionar todos os quadrinhos de um determinado gênero:
+```sql
+SELECT * FROM quadrinhos
+WHERE genero = 'Ficção Científica';
+```
+
+## 2. Selecionar todos os ilustradores de uma nacionalidade específica
+```sql
+SELECT * FROM ilustrador
+WHERE nacionalidade = 'Japonesa';
+```
+
+## 3. Ordenar os clientes pelo nome da empresa (razao) em ordem alfabética
+```sql
+SELECT * FROM Cliente
+ORDER BY razao ASC;
+```
+
+## 4. Selecionar todos os pedidos com valor acima de 200 e ordená-los pela data de venda em ordem decrescente
+```sql
+SELECT * FROM Pedidos
+WHERE valor > 200
+ORDER BY datavenda DESC;
+```
+
+## 5. Selecionar autores que nasceram após o ano de 1900
+```sql
+SELECT * FROM Autor
+WHERE nascimento > '1900-01-01';
+```
+
+## 6. Selecionar todos os quadrinhos lançados em um determinado ano
+```sql
+SELECT * FROM quadrinhos
+WHERE YEAR(data_lancamento) = 2020;
+```
+
+## 7. Selecionar todos os ilustradores que trabalham em um determinado estilo e ordenar pelo nome
+```sql
+SELECT * FROM ilustrador
+WHERE estilo = 'Manga'
+ORDER BY nome ASC;
+```
+
+## 8. Selecionar clientes com um código específico e ordenar por telefone
+```sql
+SELECT * FROM Cliente
+WHERE codigo = 12345601
+ORDER BY telefone ASC;
+```
+
+## 9. Selecionar pedidos feitos em um determinado intervalo de datas e ordenar por valor
+```sql
+SELECT * FROM Pedidos
+WHERE datavenda BETWEEN '2024-06-01' AND '2024-06-30'
+ORDER BY valor DESC;
+```
+
+## 10. Selecionar autores de uma nacionalidade específica e ordenar pelo nome
+```sql
+SELECT * FROM Autor
+WHERE nacionalidade = 'Brasileira'
+ORDER BY nome ASC;
 ```
