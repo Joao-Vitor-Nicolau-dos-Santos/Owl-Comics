@@ -6,10 +6,10 @@
   Vendemos em lote para algumas livrarias e bibliotecas, queremos manter um cadastro de clientes também. Queremos o CNPJ do lugar, a razão social, e-mail, número de telefone, endereço, cidade que esta localizado, código postal e país.
   E por ultimo, quando esses clientes fizerem algum pedido deverá ser registrado no sistema. Cada venda devera ter um número de identificação, a data que foi feito o orçamento, a data da venda, o CNPJ e nome do cliente e por fim o total da compra."
 # 2 - Modelo Conceitual
-  <img src="Conceitual.png" />
+  <img src="Owl-Comics/Conceitual.png" />
   
 # 3 - Modelagem Lógica
-  <img src="Lógico.png" />
+  <img src="Owl-Comics/Lógico.png" />
   
 # 4 - Modelagem Física
 ## Criação do banco de dados:
@@ -206,21 +206,20 @@ INSERT INTO Pedidos (VENDAID, valor, dataorcamento, datavenda) VALUES
 ```sql
 SELECT * FROM quadrinhos
 ```
-//print aqui
+<img src="Owl-Comics/Selção dos Quadrinhos.png" />
 
 # Inserção de um dado em uma tabela e leitura do mesmo (nesse caso, ilustrador):
 ```sql
 INSERT INTO ilustrador (nome, biografia, nacionalidade, estilo, nascimento) VALUES
 ('Eu :3', 'Famoso musico e ilustrador(na minha cabeça)', 'Brasileiro', 'Fantasia', '2005-08-20');
 ```
-//print aqui
+<img src="Owl-Comics/Seleção Ilustradores após inserção.png" />
 
 # Exclusão do Ilustrador "Eu :3":
 ```sql
 DELETE FROM ilustrador WHERE nome = 'Eu :3';
 ```
-
-//print aqui
+<img src="Owl-Comics/Exclusão.png" />
 
  # 7 - Relatorios:
 
@@ -229,18 +228,21 @@ DELETE FROM ilustrador WHERE nome = 'Eu :3';
 SELECT * FROM quadrinhos
 WHERE genero = 'Ficção Científica';
 ```
+<img src="Owl-Comics/Relatorio 1.png" />
 
 ## 2. Selecionar todos os ilustradores de uma nacionalidade específica
 ```sql
 SELECT * FROM ilustrador
 WHERE nacionalidade = 'Japonesa';
 ```
+<img src="Owl-Comics/Relatorio 2.png" />
 
 ## 3. Ordenar os clientes pelo nome da empresa (razao) em ordem alfabética
 ```sql
 SELECT * FROM Cliente
 ORDER BY razao ASC;
 ```
+<img src="Owl-Comics/Relatorio 3.png" />
 
 ## 4. Selecionar todos os pedidos com valor acima de 200 e ordená-los pela data de venda em ordem decrescente
 ```sql
@@ -248,18 +250,21 @@ SELECT * FROM Pedidos
 WHERE valor > 200
 ORDER BY datavenda DESC;
 ```
+<img src="Owl-Comics/Relatorio 4.png" />
 
 ## 5. Selecionar autores que nasceram após o ano de 1900
 ```sql
 SELECT * FROM Autor
 WHERE nascimento > '1900-01-01';
 ```
+<img src="Owl-Comics/Relatorio 5.png" />
 
 ## 6. Selecionar todos os quadrinhos lançados em um determinado ano
 ```sql
 SELECT * FROM quadrinhos
 WHERE YEAR(data_lancamento) = 2020;
 ```
+<img src="Owl-Comics/Relatorio 6.png" />
 
 ## 7. Selecionar todos os ilustradores que trabalham em um determinado estilo e ordenar pelo nome
 ```sql
@@ -267,6 +272,7 @@ SELECT * FROM ilustrador
 WHERE estilo = 'Manga'
 ORDER BY nome ASC;
 ```
+<img src="Owl-Comics/Relatorio 7.png" />
 
 ## 8. Selecionar clientes com um código específico e ordenar por telefone
 ```sql
@@ -274,6 +280,7 @@ SELECT * FROM Cliente
 WHERE codigo = 12345601
 ORDER BY telefone ASC;
 ```
+<img src="Owl-Comics/Relatorio 8.png" />
 
 ## 9. Selecionar pedidos feitos em um determinado intervalo de datas e ordenar por valor
 ```sql
@@ -281,6 +288,7 @@ SELECT * FROM Pedidos
 WHERE datavenda BETWEEN '2024-06-01' AND '2024-06-30'
 ORDER BY valor DESC;
 ```
+<img src="Owl-Comics/Relatorio 9.png" />
 
 ## 10. Selecionar autores de uma nacionalidade específica e ordenar pelo nome
 ```sql
@@ -288,3 +296,4 @@ SELECT * FROM Autor
 WHERE nacionalidade = 'Brasileira'
 ORDER BY nome ASC;
 ```
+<img src="Owl-Comics/Relatorio 10.png" />
